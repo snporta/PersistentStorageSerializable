@@ -15,7 +15,7 @@ extension PersistentStorageSerializable {
     func selfPropertiesNames() throws -> [String] {
         let skipNames = persistentStorageSerializableProtocolVariableNames
         let propertiesDescription = try properties(Self.self)
-        let keys: [String] = propertiesDescription.flatMap {
+        let keys: [String] = propertiesDescription.compactMap {
             skipNames.contains($0.key) ? nil : $0.key
         }
         return keys

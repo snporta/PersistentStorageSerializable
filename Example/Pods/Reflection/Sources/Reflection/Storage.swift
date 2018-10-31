@@ -15,7 +15,7 @@ func mutableStorage<T>(instance: inout T) -> UnsafeMutableRawPointer {
 }
 
 func storage<T>(instance: inout T) -> UnsafeRawPointer {
-    return withUnsafePointer(to: &instance) { pointer in
+    return withUnsafePointer(to: instance) { pointer in
         if type(of: instance) is AnyClass {
             return UnsafeRawPointer(bitPattern: UnsafePointer<Int>(pointer).pointee)!
         } else {

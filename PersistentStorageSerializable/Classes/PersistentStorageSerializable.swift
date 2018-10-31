@@ -61,10 +61,10 @@ public extension PersistentStorageSerializable {
     public mutating func pullFromPersistentStorage() throws {
         try self.persistentStorage.beginTransaction()
         try registerInstancePropertiesValueAsDefaultsWithStorageOnce()
-        try setEachSelfProperty { (key) -> Any? in
+        /*try setEachSelfProperty { (key) -> Any? in
             let storageKey = self.persistentStorageKey(for: key)
             return self.persistentStorage.get(valueOf: storageKey)
-        }
+        }*/
         try self.persistentStorage.finishTransaction()
     }
     
